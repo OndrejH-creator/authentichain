@@ -724,14 +724,32 @@ doc.text(
       currency: e.target.value,
     })
   }
-  className={inputClass}
+  
+  className={`${inputClass} bg-[#111827] text-white`}
 >
-  <option>EUR</option>
-  <option>USD</option>
-  <option>CZK</option>
-  <option>GBP</option>
-  <option>JPY</option>
-  <option>CNY</option>
+  <option value="EUR" className="bg-[#111827] text-white">
+  EUR
+</option>
+
+<option value="USD" className="bg-[#111827] text-white">
+  USD
+</option>
+
+<option value="CZK" className="bg-[#111827] text-white">
+  CZK
+</option>
+
+<option value="GBP" className="bg-[#111827] text-white">
+  GBP
+</option>
+
+<option value="JPY" className="bg-[#111827] text-white">
+  JPY
+</option>
+
+<option value="CNY" className="bg-[#111827] text-white">
+  CNY
+</option>
 </select>
                 
 
