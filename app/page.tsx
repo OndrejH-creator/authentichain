@@ -667,63 +667,74 @@ doc.text(
                   }
                   className={inputClass}
                 />
+<div>
+  <label className="mb-2 block text-sm text-slate-400">
+    Issue Date
+  </label>
 
-                <input
-                  type="date"
-                  value={invoiceData.issueDate}
-                  onChange={(e) =>
-                    setInvoiceData({
-                      ...invoiceData,
-                      issueDate: e.target.value,
-                    })
-                  }
-                  className={inputClass}
-                />
+  <input
+    type="date"
+    value={invoiceData.issueDate}
+    onChange={(e) =>
+      setInvoiceData({
+        ...invoiceData,
+        issueDate: e.target.value,
+      })
+    }
+    className={inputClass}
+  />
+</div>
 
-                <input
-                  type="date"
-                  value={invoiceData.dueDate}
-                  onChange={(e) =>
-                    setInvoiceData({
-                      ...invoiceData,
-                      dueDate: e.target.value,
-                    })
-                  }
-                  className={inputClass}
-                />
+<div>
+  <label className="mb-2 block text-sm text-slate-400">
+    Due Date
+  </label>
 
-                <input
-                  placeholder="Amount"
-                  value={invoiceData.amount}
-                  onChange={(e) =>
-                    setInvoiceData({
-                      ...invoiceData,
-                      amount: e.target.value,
-                    })
-                  }
-                  className={inputClass}
-                />
+  <input
+    type="date"
+    value={invoiceData.dueDate}
+    onChange={(e) =>
+      setInvoiceData({
+        ...invoiceData,
+        dueDate: e.target.value,
+      })
+    }
+    className={inputClass}
+  />
+</div>
 
-                <select
-                  value={invoiceData.currency}
-                  onChange={(e) =>
-                    setInvoiceData({
-                      ...invoiceData,
-                      currency: e.target.value,
-                    })
-                  }
-                  className={inputClass}
-                >
-                  {currencies.map((currency) => (
-                    <option
-                      key={currency}
-                      value={currency}
-                      className="bg-[#020817]"
-                    >
-                      {currency}
-                    </option>
-                  ))}
-                </select>
+<input
+  type="number"
+  placeholder="Amount"
+  value={invoiceData.amount}
+  onChange={(e) =>
+    setInvoiceData({
+      ...invoiceData,
+      amount: e.target.value,
+    })
+  }
+  className={inputClass}
+/>
+
+<select
+  value={invoiceData.currency}
+  onChange={(e) =>
+    setInvoiceData({
+      ...invoiceData,
+      currency: e.target.value,
+    })
+  }
+  className={inputClass}
+>
+  <option>EUR</option>
+  <option>USD</option>
+  <option>CZK</option>
+  <option>GBP</option>
+  <option>JPY</option>
+  <option>CNY</option>
+</select>
+                
+
               </div>
 
               <textarea
@@ -738,7 +749,7 @@ doc.text(
                 className="mt-6 h-40 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-cyan-400"
               />
 
-              <button
+                            <button
                 onClick={generateInvoicePDF}
                 disabled={isGenerating}
                 className="mt-10 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-5 text-lg font-bold text-black transition hover:scale-[1.01] disabled:opacity-50"
@@ -747,9 +758,12 @@ doc.text(
                   ? "Generating & Storing on Blockchain..."
                   : "Generate Invoice & Store on Blockchain"}
               </button>
-            </div>
-          </div>
-        )}
+              </div>
+              </div>
+              )}
+              
+          
+        
 
         {generatedHash && (
           <div className="mt-10 rounded-2xl border border-cyan-500/20 bg-[#0b1120] p-8">
@@ -792,23 +806,23 @@ doc.text(
             </div>
 
             <a
-              href={
-  "https://sepolia.etherscan.io/tx/" +
-  txHash
-}
-              target="_blank"
-              className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200"
-            >
-              View transaction on Etherscan →
-            </a>
-          </div>
-        )}
-      </section>
+  href={"https://sepolia.etherscan.io/tx/" + txHash}
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200"
+>
+  View transaction on Etherscan →
+</a>
+          
+             </div>
+             )}
 
-      <section
-        id="verify"
-        className="mx-auto max-w-4xl px-6 pb-28"
-      >
+</section>
+
+<section
+  id="verify"
+  className="mx-auto max-w-4xl px-6 pb-28"
+>
         <h2 className="mb-3 text-center text-5xl font-bold">
           Verify PDF
         </h2>
