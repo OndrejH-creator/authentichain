@@ -47,6 +47,7 @@ export default function HomePage() {
   const [verifyFile, setVerifyFile] = useState<File | null>(null);
   
   const [showSuccess, setShowSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [generatedHash, setGeneratedHash] = useState("");
   const [txHash, setTxHash] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -137,6 +138,8 @@ export default function HomePage() {
     }
 
     setIsGenerating(true);
+    setShowSuccess(false);
+    setErrorMessage("");
     setVerificationResult(null);
 
     try {
@@ -175,6 +178,12 @@ export default function HomePage() {
       
       setShowSuccess(true);
 
+setTimeout(() => {
+  setShowSuccess(false);
+}, 3000);
+      
+      setShowSuccess(true);
+
 	setTimeout(() => {
   	setShowSuccess(false);
 	}, 3000);
@@ -197,15 +206,31 @@ export default function HomePage() {
         message:
           "Hash successfully stored on Sepolia blockchain.",
       });
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+  console.error(err);
 
-      setVerificationResult({
-        success: false,
-        message:
-          "Transaction failed or hash already exists.",
-      });
-    } finally {
+  const errorText =
+    err?.reason ||
+    err?.shortMessage ||
+    err?.message ||
+    "";
+
+  if (errorText.includes("Hash already exists")) {
+    setErrorMessage(
+      "❌ This document hash already exists on the blockchain."
+    );
+  } else {
+    setErrorMessage(
+      "❌ Blockchain transaction failed."
+    );
+  }
+
+  setVerificationResult({
+    success: false,
+    message:
+      "Transaction failed or hash already exists.",
+  });
+} finally {
       setIsGenerating(false);
     }
   };
@@ -293,9 +318,26 @@ doc.text(
       doc.save("invoice.pdf");
 
       await processPDF(file);
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err: any) {
+  console.error(err);
+
+  const errorText =
+    err?.reason ||
+    err?.shortMessage ||
+    err?.message ||
+    "";
+
+  if (errorText.includes("Hash already exists")) {
+    setErrorMessage(
+      "❌ This document hash already exists on the blockchain."
+    );
+  } else {
+    setErrorMessage("❌ Transaction failed.");
+  }
+}
+finally {
+  setIsGenerating(false)
+  };
   };
 
   const verifyIntegrity = async () => {
@@ -789,12 +831,17 @@ doc.text(
   ? "Generating & Storing on Blockchain..."
   : "Generate Invoice & Store on Blockchain"}
   </button>
+  
  
  </div>
  </div>
  )}
               
-          
+  {errorMessage && (
+  <p className="mt-4 text-center text-red-400 font-medium">
+    {errorMessage}
+  </p>
+)}        
         
 
         {generatedHash && (
