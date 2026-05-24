@@ -218,7 +218,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#020817] text-white">
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#020817]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           <div className="flex items-center gap-4">
             <Image
               src="/logo.png"
@@ -265,7 +265,7 @@ export default function HomePage() {
 
         <div className="absolute right-20 top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[120px]" />
 
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-12 lg:grid-cols-2">
           <div>
             <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
               Ethereum-backed document integrity
