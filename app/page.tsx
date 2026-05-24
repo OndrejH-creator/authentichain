@@ -342,7 +342,7 @@ const uploader = result.uploader;
         className="mx-auto max-w-4xl px-6 py-24"
       >
         <h2 className="mb-3 text-center text-5xl font-bold">
-          Upload Invoice PDF
+          Upload PDF
         </h2>
 
         <p className="mb-14 text-center text-slate-400">
@@ -441,7 +441,7 @@ const uploader = result.uploader;
         className="mx-auto max-w-4xl px-6 pb-28"
       >
         <h2 className="mb-3 text-center text-5xl font-bold">
-          Verify Invoice PDF
+          Verify PDF
         </h2>
 
         <p className="mb-14 text-center text-slate-400">
