@@ -240,7 +240,16 @@ const uploader = result.uploader;
             />
           </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
+          
+          <div className="hidden items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-2 md:flex">
+    <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+
+    <span className="text-sm font-medium text-cyan-200">
+      Sepolia Testnet
+    </span>
+  </div>
+          
             <a
               href="#upload"
               className="text-slate-300 transition hover:text-white"
@@ -556,6 +565,35 @@ const uploader = result.uploader;
           )}
         </div>
       </section>
+      
+      <footer className="border-t border-white/10 bg-[#020817]">
+  <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-center md:text-left">
+    <div>
+      <h3 className="text-lg font-semibold text-white">
+        AuthentiChain
+      </h3>
+
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400">
+        Blockchain-based document authenticity verification prototype
+        built for academic and demonstration purposes.
+      </p>
+    </div>
+
+    <div className="text-sm leading-relaxed text-slate-500">
+      This application is a school project prototype and should not be
+      considered production-ready software. The authors assume no liability
+      for data loss, misuse, incorrect verification results, or financial
+      damages arising from its use.
+    </div>
+
+    <div className="pt-2 text-xs text-slate-600">
+      © 2026 AuthentiChain · Ethereum Sepolia Testnet
+    </div>
+  </div>
+</footer>
+      
+      
+      
     </main>
   );
 }
