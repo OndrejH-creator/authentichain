@@ -225,7 +225,7 @@ const uploader = result.uploader;
               alt="AuthentiChain Logo"
               width={260}
               height={80}
-              {/*style={{ width: "auto", height: "auto" }}*/}
+              style={{ width: "auto", height: "auto" }}
               priority
               className="object-contain"
             />
