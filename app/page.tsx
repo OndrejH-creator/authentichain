@@ -268,9 +268,13 @@ const uploader = result.uploader;
 
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-2 lg:grid-cols-2">
           <div>
-            <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
-              Powered by Ethereum
-            </div>
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-2 backdrop-blur-md shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+  <div className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+
+  <span className="text-sm font-medium tracking-wide text-cyan-200">
+    Blockchain-secured authenticity
+  </span>
+</div>
 
             <h2 className="max-w-3xl text-6xl font-black leading-tight">
               Prove document authenticity.
