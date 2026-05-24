@@ -179,11 +179,11 @@ export default function HomePage() {
 
       const result = await contract.verify("0x" + hashHex);
 
-      const stored = result[0];
+      const stored = result.stored;
 
-      const timestamp = Number(result[1]);
+const timestamp = Number(result.timestamp);
 
-      const uploader = result[2];
+const uploader = result.uploader;
 
       if (stored) {
         const readableDate = new Date(
@@ -225,6 +225,7 @@ export default function HomePage() {
               alt="AuthentiChain Logo"
               width={260}
               height={80}
+              style={{ width: "auto", height: "auto" }}
               priority
               className="object-contain"
             />
