@@ -5,25 +5,12 @@ import Image from "next/image";
 import { ethers } from "ethers";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "./lib/contract";
 
-type EthereumProvider = {
-  request: (args: {
-    method: string;
-    params?: unknown[];
-  }) => Promise<unknown>;
-};
-
 type HashHistoryEntry = {
   fileName: string;
   hash: string;
   timestamp: number;
   txHash?: string;
 };
-
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
 
 export default function HomePage() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -61,17 +48,17 @@ export default function HomePage() {
 
   const connectWallet = async () => {
     try {
-      if (!window.ethereum) {
+      if (!(window as any).ethereum) {
         alert("Please install MetaMask.");
         return;
       }
 
-      await window.ethereum.request({
+      await (window as any).ethereum.request({
         method: "wallet_switchEthereumChain",
         params: [{ chainId: "0xaa36a7" }],
       });
 
-      const accounts = (await window.ethereum.request({
+      const accounts = (await (window as any).ethereum.request({
         method: "eth_requestAccounts",
       })) as string[];
 
@@ -85,7 +72,7 @@ export default function HomePage() {
     try {
       if (!selectedFile) return;
 
-      if (!window.ethereum) {
+      if (!(window as any).ethereum) {
         alert("Please install MetaMask.");
         return;
       }
@@ -110,7 +97,7 @@ export default function HomePage() {
       setGeneratedHash(hashHex);
 
       const provider = new ethers.BrowserProvider(
-        window.ethereum as ethers.Eip1193Provider
+        (window as any).ethereum
       );
 
       const signer = await provider.getSigner();
@@ -175,13 +162,13 @@ export default function HomePage() {
         .map((b) => b.toString(16).padStart(2, "0"))
         .join("");
 
-      if (!window.ethereum) {
+      if (!(window as any).ethereum) {
         alert("Please install MetaMask.");
         return;
       }
 
       const provider = new ethers.BrowserProvider(
-        window.ethereum as ethers.Eip1193Provider
+        (window as any).ethereum
       );
 
       const contract = new ethers.Contract(
@@ -230,15 +217,14 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#020817] text-white">
-      {/* NAVBAR */}
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#020817]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-4">
             <Image
               src="/logo.png"
               alt="AuthentiChain Logo"
-              width={340}
-              height={110}
+              width={520}
+              height={160}
               priority
               className="object-contain"
             />
@@ -274,7 +260,6 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-cyan-500/20 blur-[120px]" />
 
@@ -349,7 +334,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* UPLOAD */}
       <section
         id="upload"
         className="mx-auto max-w-4xl px-6 py-24"
@@ -449,7 +433,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* VERIFY */}
       <section
         id="verify"
         className="mx-auto max-w-4xl px-6 pb-28"
