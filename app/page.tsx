@@ -266,7 +266,7 @@ const uploader = result.uploader;
 
         <div className="absolute right-20 top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[120px]" />
 
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-12 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-2 lg:grid-cols-2">
           <div>
             <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
               Ethereum-backed document integrity
