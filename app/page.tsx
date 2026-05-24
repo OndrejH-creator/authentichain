@@ -39,11 +39,14 @@ const currencies = [
 
 export default function HomePage() {
   const [mode, setMode] = useState<"upload" | "generate">("upload");
+  
+  
 
   const [walletAddress, setWalletAddress] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [verifyFile, setVerifyFile] = useState<File | null>(null);
-
+  
+  const [showSuccess, setShowSuccess] = useState(false);
   const [generatedHash, setGeneratedHash] = useState("");
   const [txHash, setTxHash] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -169,6 +172,14 @@ export default function HomePage() {
       setTxHash(tx.hash);
 
       await tx.wait();
+      
+      setShowSuccess(true);
+
+	setTimeout(() => {
+  	setShowSuccess(false);
+	}, 3000);
+      
+      
 
       const newEntry: HashHistoryEntry = {
         fileName: file.name,
@@ -772,13 +783,16 @@ doc.text(
                 disabled={isGenerating}
                 className="mt-10 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-5 text-lg font-bold text-black transition hover:scale-[1.01] disabled:opacity-50"
               >
-                {isGenerating
-                  ? "Generating & Storing on Blockchain..."
-                  : "Generate Invoice & Store on Blockchain"}
-              </button>
-              </div>
-              </div>
-              )}
+               {showSuccess
+  ? "✅ Success!"
+  : isGenerating
+  ? "Generating & Storing on Blockchain..."
+  : "Generate Invoice & Store on Blockchain"}
+  </button>
+ 
+ </div>
+ </div>
+ )}
               
           
         
