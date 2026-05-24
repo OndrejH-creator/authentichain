@@ -223,8 +223,8 @@ export default function HomePage() {
             <Image
               src="/logo.png"
               alt="AuthentiChain Logo"
-              width={520}
-              height={160}
+              width={260}
+              height={80}
               priority
               className="object-contain"
             />
