@@ -28,6 +28,15 @@ export default function HomePage() {
   } | null>(null);
 
   const [hashHistory, setHashHistory] = useState<HashHistoryEntry[]>([]);
+  
+  const copyToClipboard = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert("Copied to clipboard");
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   useEffect(() => {
     const saved = localStorage.getItem("authentichain-history");
@@ -408,9 +417,18 @@ const uploader = result.uploader;
                 SHA-256 HASH
               </h3>
 
-              <p className="break-all font-mono text-cyan-200">
-                {generatedHash}
-              </p>
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+  <p className="break-all font-mono text-cyan-200">
+    {generatedHash}
+  </p>
+
+  <button
+    onClick={() => copyToClipboard(generatedHash)}
+    className="rounded-xl border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-500/20"
+  >
+    Copy Hash
+  </button>
+</div>
             </div>
           )}
 
@@ -424,6 +442,14 @@ const uploader = result.uploader;
                 Hash stored successfully on Sepolia blockchain.
               </p>
 
+	<div className="mb-5 flex flex-wrap gap-3">
+  <button
+    onClick={() => copyToClipboard(txHash)}
+    className="rounded-xl border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-500/20"
+  >
+    Copy Transaction Hash
+  </button>
+</div>
               <a
                 href={`https://sepolia.etherscan.io/tx/${txHash}`}
                 target="_blank"
