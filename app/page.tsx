@@ -269,21 +269,19 @@ const uploader = result.uploader;
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-2 lg:grid-cols-2">
           <div>
             <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
-              Ethereum-backed document integrity
+              Powered by Ethereum
             </div>
 
             <h2 className="max-w-3xl text-6xl font-black leading-tight">
-              Verify invoice integrity.
+              Prove document authenticity.
 
               <span className="block bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                Without trusting third parties.
+                Instantly. Permanently.
               </span>
             </h2>
 
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-slate-400">
-              Upload a PDF invoice, generate a SHA-256
-              cryptographic fingerprint, and verify document
-              integrity using blockchain storage.
+              Upload a PDF document, generate a unique SHA-256 fingerprint, and anchor its authenticity on Ethereum.
             </p>
           </div>
 
@@ -295,7 +293,7 @@ const uploader = result.uploader;
             <div className="space-y-8">
               {[
                 {
-                  title: "Upload invoice PDF",
+                  title: "Upload PDF document",
                   desc: "Exact binary file uploaded locally.",
                 },
                 {
@@ -303,11 +301,11 @@ const uploader = result.uploader;
                   desc: "Unique cryptographic fingerprint.",
                 },
                 {
-                  title: "Store hash on blockchain",
+                  title: "Anchor proof on Ethereum",
                   desc: "Immutable timestamp proof.",
                 },
                 {
-                  title: "Verify integrity later",
+                  title: "Verify authenticity anytime",
                   desc: "Any modification changes the hash.",
                 },
               ].map((step, index) => (
